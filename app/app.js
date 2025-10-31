@@ -17,13 +17,13 @@ app.get("/", (_req, res) => {
 
 //CRUD de usuarios
 //Listar
-app.get("/users", (_req, res) => {
+app.get("/listar", (_req, res) => {
   const users = getUsers();
   res.json(users);
 });
 
 //Crear
-app.post("/users", (req, res) => {
+app.post("/crear", (req, res) => {
   const { nombre, apellido, celular } = req.body;
   if (!nombre || !apellido || !celular) {
     return res.status(400).json({ error: "Faltan campos obligatorios" });
@@ -33,7 +33,7 @@ app.post("/users", (req, res) => {
 });
 
 //Actualizar
-app.put("/users/:id", (req, res) => {
+app.put("/editar/:id", (req, res) => {
   const { id } = req.params;
   const updated = updateUser(id, req.body);
   if (!updated) {
@@ -43,7 +43,7 @@ app.put("/users/:id", (req, res) => {
 });
 
 //Eliminar
-app.delete("/users/:id", (req, res) => {
+app.delete("/eliminar/:id", (req, res) => {
   const { id } = req.params;
   const deleted = deleteUser(id);
   if (!deleted) {

@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const dataPath = path.resolve("./app/data/users.json");
+const dataPath = path.join(process.cwd(), "data", "users.json");
 
 // Función auxiliar para leer el archivo
 function readData() {
