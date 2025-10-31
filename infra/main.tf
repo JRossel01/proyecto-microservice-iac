@@ -81,6 +81,14 @@ resource "aws_instance" "this" {
   user_data                   = local.user_data
   associate_public_ip_address = true
 
+  root_block_device {
+    encrypted = true
+  }
+
+  metadata_options {
+    http_tokens = "required"
+  }
+
   tags = {
     Name    = "${var.project_name}-ec2"
     Project = var.project_name
