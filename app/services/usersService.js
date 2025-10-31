@@ -23,7 +23,8 @@ export function getUsers() {
 // Crear nuevo usuario
 export function createUser(user) {
   const users = readData();
-  const newUser = { id: Date.now(), ...user };
+  const nextId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+  const newUser = { id: nextId, ...user };
   users.push(newUser);
   writeData(users);
   return newUser;
